@@ -454,7 +454,7 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin: 0 4.5vw 70px;
+  margin: 55px 4.5vw 70px;
 }
 .source-service {
   overflow: hidden;
@@ -721,7 +721,7 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   .about-page-image img { height: 480px; }
   .about-page-copy { padding: 35px 5vw 50px; }
   .practice-page-grid { margin: 0; padding: 0 5vw 55px; }
-  .source-services { grid-template-columns: 1fr; margin: 0 5vw 55px; }
+  .source-services { grid-template-columns: 1fr; margin: 55px 5vw 55px; }
   .course-details { margin: 0 5vw 55px; }
   .course-detail-grid { grid-template-columns: 1fr; }
   .retreat-schedule { grid-template-columns: 1fr; }
