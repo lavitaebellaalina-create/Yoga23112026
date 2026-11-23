@@ -95,11 +95,16 @@ const server = http.createServer(async (request, response) => {
         "Практика — Йога для беременных",
         "Запрос ретрита",
         "Сертификат",
+        "Практика — Йога в Ларнаке",
+        "Онлайн клуб йоги",
         "Practice — Pelvic floor",
         "Practice — Healthy back",
         "Practice — Prenatal yoga",
         "Retreat enquiry",
-        "Gift certificate"
+        "Gift certificate",
+        "Practice — Yoga in Larnaca",
+        "Online yoga club",
+        "Practice — Prenatal yoga"
       ];
       const subject = String(data.subject || "").trim();
       if (String(data.website || "").trim()) return json(response, 200, { ok: true });

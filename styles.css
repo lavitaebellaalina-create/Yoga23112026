@@ -467,11 +467,26 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
 .source-service img { height: 300px; object-fit: cover; }
 .source-service > div { display: flex; flex-direction: column; align-items: flex-start; padding: 24px 28px 30px; }
 .source-service h2 { font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 8px 0 12px; }
-.source-service p:not(.service-meta) { line-height: 1.55; color: #59615d; }
+.source-service p:not(.service-meta) { min-height: 72px; line-height: 1.55; color: #59615d; }
 .source-service strong { margin: 4px 0 18px; }
 .source-service .button { margin-top: auto; }
 .course-details { display: grid; gap: 12px; margin: 0 4.5vw 110px; }
 .course-detail { border: 1px solid var(--line); border-radius: 18px; background: #faf8f1; overflow: hidden; }
+.open-course { padding: 0; }
+.course-kicker {
+  margin: 0 0 10px;
+  color: #747c77;
+  font-size: var(--small);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.course-detail-grid h2 {
+  margin: 0 0 12px;
+  font-family: "Marcellus", serif;
+  font-size: var(--h2);
+  font-weight: 400;
+  line-height: 1.05;
+}
 .course-detail summary { cursor: pointer; list-style: none; padding: 24px 28px; font-family: "Marcellus", serif; font-size: 26px; }
 .course-detail summary::-webkit-details-marker { display: none; }
 .course-detail[open] summary { border-bottom: 1px solid var(--line); }
@@ -724,7 +739,7 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   .practice-page-grid { margin: 0; padding: 0 5vw 55px; }
   .source-services { grid-template-columns: 1fr; margin: 55px 5vw 55px; }
   .course-details { margin: 0 5vw 55px; }
-  .course-detail-grid { grid-template-columns: 1fr; }
+  .course-detail-grid { grid-template-columns: 1fr; gap: 24px; }
   .retreat-schedule { grid-template-columns: 1fr; }
   .retreat-gallery-extra { grid-template-columns: 1fr; height: auto; }
   .retreat-gallery-extra img { height: 320px; }

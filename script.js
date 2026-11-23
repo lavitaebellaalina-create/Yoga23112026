@@ -62,9 +62,24 @@ if (leadForm) {
 
   if (subjectPicker && subjectMenu) {
     const subjectParam = new URLSearchParams(window.location.search).get("subject");
-    if (subjectParam === "certificate") {
-      subjectValue.textContent = "Сертификат";
-      subjectInput.value = "Сертификат";
+    const subjectMap = isEnglish ? {
+      "certificate": ["Gift certificate", "Gift certificate"],
+      "yoga-larnaca": ["Yoga in Larnaca", "Practice — Yoga in Larnaca"],
+      "online-club": ["Online yoga club", "Online yoga club"],
+      "pregnancy": ["Prenatal yoga", "Practice — Prenatal yoga"],
+      "pelvic-floor": ["Pelvic floor course", "Practice — Pelvic floor"],
+      "healthy-back": ["Healthy back course", "Practice — Healthy back"]
+    } : {
+      "certificate": ["Сертификат", "Сертификат"],
+      "yoga-larnaca": ["Йога в Ларнаке", "Практика — Йога в Ларнаке"],
+      "online-club": ["Онлайн клуб йоги", "Онлайн клуб йоги"],
+      "pregnancy": ["Йога для беременных", "Практика — Йога для беременных"],
+      "pelvic-floor": ["Курс «Тазовое дно»", "Практика — Тазовое дно"],
+      "healthy-back": ["Курс «Здоровая спина»", "Практика — Здоровая спина"]
+    };
+    if (subjectParam && subjectMap[subjectParam]) {
+      subjectValue.textContent = subjectMap[subjectParam][0];
+      subjectInput.value = subjectMap[subjectParam][1];
       updateSubmitState();
     }
     subjectPicker.addEventListener("click", () => {
