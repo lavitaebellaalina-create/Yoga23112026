@@ -471,8 +471,8 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   align-items: start;
   padding: 24px 28px 30px;
 }
-.source-service h2 { grid-row: 2; font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 8px 0 12px; }
-.source-service .service-meta { grid-row: 1; }
+.source-service h2 { grid-row: 2; font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 0; }
+.source-service .service-meta { grid-row: 1; margin: 0 0 6px !important; }
 .source-service p:not(.service-meta) { grid-row: 3; min-height: 72px; line-height: 1.55; color: #59615d; }
 .source-service strong { grid-row: 4; margin: 0; align-self: end; }
 .source-service .button { grid-row: 5; align-self: end; }
