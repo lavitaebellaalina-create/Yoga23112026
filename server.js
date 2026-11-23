@@ -8,7 +8,9 @@ const dataFile = path.join(root, "data", "leads.jsonl");
 const port = Number(process.env.PORT || 4173);
 const requests = new Map();
 
-fs.mkdirSync(path.dirname(dataFile), { recursive: true });
+if (!process.env.VERCEL) {
+  fs.mkdirSync(path.dirname(dataFile), { recursive: true });
+}
 
 const types = {
   ".html": "text/html; charset=utf-8",
