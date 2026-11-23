@@ -393,7 +393,14 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   padding: 0 4vw 0 2vw;
   line-height: 1.55;
 }
-.about-page-copy .large { font-size: var(--h2); line-height: 1.08; margin: 0 0 18px; }
+.about-page-copy .large {
+  font-size: var(--h2);
+  line-height: 1.08;
+  margin: 0 0 18px;
+  text-wrap: balance;
+  font-variant-numeric: lining-nums;
+}
+.text-nowrap { white-space: nowrap; }
 .about-page-copy p { max-width: 590px; margin: 8px 0; }
 .about-page-copy .button { margin-top: 16px; }
 .practice-page-grid {
