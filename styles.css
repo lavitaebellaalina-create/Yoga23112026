@@ -462,12 +462,12 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   background: #faf8f1;
   border-radius: 18px;
   display: grid;
-  grid-template-rows: 300px 1fr;
+  grid-template-rows: 300px 350px;
 }
 .source-service img { height: 300px; object-fit: cover; }
 .source-service > div {
   display: grid;
-  grid-template-rows: auto auto 72px 28px 48px;
+  grid-template-rows: auto 72px 72px 32px 48px;
   align-items: start;
   padding: 24px 28px 30px;
 }
