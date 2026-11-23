@@ -142,6 +142,25 @@ h1 em, h2 em { color: var(--sage); font-weight: 400; }
   font-size: 9px;
   transform: rotate(-8deg);
 }
+.home-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 70px 4.5vw;
+}
+.home-category { display: block; background: #faf8f1; border-radius: 18px; overflow: hidden; }
+.home-category img { height: 330px; object-fit: cover; }
+.home-category div { display: flex; justify-content: space-between; align-items: center; padding: 22px 24px; }
+.home-category h2 { font-size: var(--card-title); margin: 0; }
+.home-category span { font-size: var(--small); }
+.home-about { display: grid; grid-template-columns: 24% 76%; padding: 70px 4.5vw 110px; }
+.home-about .large { margin: 0 0 24px; }
+.home-about p:not(.large) { max-width: 760px; line-height: 1.65; }
+.home-reviews { padding: 70px 4.5vw 110px; border-top: 1px solid var(--line); }
+.home-reviews h2 { font-family: "Marcellus", serif; font-size: var(--h1); font-weight: 400; margin: 0 0 40px; }
+.home-review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.home-review-grid blockquote { margin: 0; padding: 28px; background: #faf8f1; border-radius: 18px; line-height: 1.55; }
+.home-review-grid small { display: block; margin-top: 24px; color: #747c77; font-size: 13px; }
 
 .section { padding: 110px 4.5vw; }
 .section-label { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
@@ -272,6 +291,26 @@ h1 em, h2 em { color: var(--sage); font-weight: 400; }
   line-height: 1.1;
   margin: 0 0 70px;
 }
+.retreat-copy { max-width: 760px; margin: -35px 0 38px; line-height: 1.65; color: #d1d8d2; }
+.retreat-schedule {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+.retreat-schedule div { padding: 20px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; }
+.retreat-schedule h3, .retreat-experiences h3, .retreat-booking h3 { font-family: "Marcellus", serif; }
+.retreat-schedule p { color: #d1d8d2; line-height: 1.55; }
+.retreat-experiences { margin: 24px 0 38px; }
+.retreat-experiences ul, .retreat-booking ul { padding-left: 18px; line-height: 1.65; }
+.retreat-gallery-extra { grid-template-columns: repeat(3, 1fr); height: 420px; padding: 0; margin: 38px 0; }
+.retreat-booking { margin: 38px 0; }
+.retreat-booking h4 { font-family: "Marcellus", serif; font-size: 20px; }
+.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.booking-grid > div { padding: 22px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; }
+.retreat-hotel-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+.retreat-hotel-gallery img { height: 260px; object-fit: cover; border-radius: 14px; }
+.retreat-contact { margin-top: 38px; }
 .retreat-includes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -411,6 +450,35 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   padding: 0 4.5vw 110px;
   border: 0;
 }
+.source-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 0 4.5vw 70px;
+}
+.source-service {
+  overflow: hidden;
+  background: #faf8f1;
+  border-radius: 18px;
+  display: grid;
+  grid-template-rows: 300px 1fr;
+}
+.source-service img { height: 300px; object-fit: cover; }
+.source-service > div { display: flex; flex-direction: column; align-items: flex-start; padding: 24px 28px 30px; }
+.source-service h2 { font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 8px 0 12px; }
+.source-service p:not(.service-meta) { line-height: 1.55; color: #59615d; }
+.source-service strong { margin: 4px 0 18px; }
+.source-service .button { margin-top: auto; }
+.course-details { display: grid; gap: 12px; margin: 0 4.5vw 110px; }
+.course-detail { border: 1px solid var(--line); border-radius: 18px; background: #faf8f1; overflow: hidden; }
+.course-detail summary { cursor: pointer; list-style: none; padding: 24px 28px; font-family: "Marcellus", serif; font-size: 26px; }
+.course-detail summary::-webkit-details-marker { display: none; }
+.course-detail[open] summary { border-bottom: 1px solid var(--line); }
+.course-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 28px; }
+.course-detail-grid p, .course-detail-grid li { line-height: 1.65; }
+.course-detail-grid ul { padding-left: 18px; }
+.course-detail-grid h3 { font-family: "Marcellus", serif; font-size: 22px; }
+.course-detail-grid .button { margin-top: 16px; }
 .gift-certificate {
   margin: 0 4.5vw 110px;
   display: grid;
@@ -613,6 +681,11 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   .hero-copy { min-height: 500px; padding: 70px 5vw; }
   h1 { font-size: 56px; }
   .hero-image { height: 68vh; }
+  .home-categories, .home-review-grid { grid-template-columns: 1fr; }
+  .home-categories { padding: 55px 5vw; }
+  .home-category img { height: 300px; }
+  .home-about { grid-template-columns: 1fr; gap: 30px; padding: 55px 5vw 70px; }
+  .home-reviews { padding: 55px 5vw 70px; }
   .image-note { width: 92px; height: 92px; }
   .section { padding: 76px 5vw; }
   .about { grid-template-columns: 1fr; gap: 50px; }
@@ -648,6 +721,15 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   .about-page-image img { height: 480px; }
   .about-page-copy { padding: 35px 5vw 50px; }
   .practice-page-grid { margin: 0; padding: 0 5vw 55px; }
+  .source-services { grid-template-columns: 1fr; margin: 0 5vw 55px; }
+  .course-details { margin: 0 5vw 55px; }
+  .course-detail-grid { grid-template-columns: 1fr; }
+  .retreat-schedule { grid-template-columns: 1fr; }
+  .retreat-gallery-extra { grid-template-columns: 1fr; height: auto; }
+  .retreat-gallery-extra img { height: 320px; }
+  .booking-grid { grid-template-columns: 1fr; }
+  .retreat-hotel-gallery { grid-template-columns: 1fr; }
+  .retreat-hotel-gallery img { height: 300px; }
   .gift-certificate { margin: 0 5vw 55px; grid-template-columns: 1fr; gap: 24px; padding: 28px 22px; }
   .lead-page { grid-template-columns: 1fr; min-height: auto; padding: 10px; gap: 10px; }
   .lead-copy { min-height: 320px; padding: 42px 7vw; border-radius: 18px; }
