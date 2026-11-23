@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Записаться на йогу в Ларнаке и онлайн | Алина Мануйлова</title>
+  <meta name="description" content="Связаться с тренером по йоге Алина Мануйловой: йога в Ларнаке, онлайн-практики, йога для беременных и йога-ретриты на Кипре.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span>Алина Мануйлова</span><small>Йога. Дыхание. Внутренний ритм.</small></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><b>Меню</b></button>
+    <nav id="menu" class="nav" aria-label="Главная навигация">
+      <a href="practices.html">Практики</a><a href="retreat.html">Ретриты</a><a href="reviews.html">Отзывы</a><a href="about.html">Обо мне</a><a href="contact.html">Связаться</a>
+    </nav>
+  </header>
+  <main class="lead-page">
+    <section class="lead-copy">
+      <h1>Практика под<br><em>ваше состояние.</em></h1>
+      <p>Выберите тему и оставьте контакты. Я отвечу и помогу определить подходящий формат.</p>
+    </section>
+    <section class="lead-form-wrap">
+      <form id="lead-form" class="lead-form" action="/api/leads" method="post">
+        <h2>Записаться на практику</h2>
+        <label>Тема обращения
+          <input type="hidden" name="subject" value="">
+          <button class="subject-picker" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="subject-value">Выберите тему</span>
+            <span class="subject-arrow" aria-hidden="true">⌄</span>
+          </button>
+          <div class="subject-menu" role="listbox" aria-label="Тема обращения" hidden>
+            <button type="button" role="option" data-value="Практика — Тазовое дно">Практика — Тазовое дно</button>
+            <button type="button" role="option" data-value="Практика — Здоровая спина">Практика — Здоровая спина</button>
+            <button type="button" role="option" data-value="Практика — Йога для беременных">Практика — Йога для беременных</button>
+            <button type="button" role="option" data-value="Запрос ретрита">Запрос ретрита</button>
+            <button type="button" role="option" data-value="Сертификат">Сертификат</button>
+          </div>
+        </label>
+        <label>Как вас зовут?<input type="text" name="name" autocomplete="name" maxlength="80" required placeholder="Имя"></label>
+        <label>Электронная почта<input type="email" name="email" autocomplete="email" maxlength="254" required placeholder="Email"></label>
+        <label class="consent"><input type="checkbox" name="consent" required><span>Согласие на ответ и обработку данных. <a href="privacy.html">Подробнее</a>.</span></label>
+        <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="button form-button" type="submit" disabled>Отправить заявку <span>↗</span></button>
+        <p id="form-status" class="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer id="site-footer" class="contact-footer"></footer>
+  <script src="script.js"></script>
+</body>
+</html>
