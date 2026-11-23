@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Yoga in Larnaca and Online | Alina Manuilova</title>
+  <meta name="description" content="Contact yoga teacher Alina Manuilova for yoga in Larnaca, online yoga, prenatal yoga and retreats in Cyprus.">
+  <link rel="alternate" hreflang="ru" href="../contact.html"><link rel="alternate" hreflang="en" href="contact.html"><link rel="alternate" hreflang="x-default" href="../contact.html">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span>Alina Manuilova</span><small>Yoga. Breath. Inner rhythm.</small></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu"><span></span><span></span><b>Menu</b></button>
+    <nav id="menu" class="nav" aria-label="Main navigation">
+      <a href="practices.html">Practices</a><a href="retreat.html">Retreats</a><a href="reviews.html">Reviews</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <span class="language-switch"><a href="../contact.html" lang="ru">RU</a><span>/</span><a href="contact.html" class="active" lang="en" aria-current="page">EN</a></span>
+    </nav>
+  </header>
+  <main class="lead-page">
+    <section class="lead-copy">
+      <h1>A practice for<br><em>your needs.</em></h1>
+      <p>Choose a topic and leave your contact details. I will reply and help you find the right format.</p>
+    </section>
+    <section class="lead-form-wrap">
+      <form id="lead-form" class="lead-form" action="/api/leads" method="post">
+        <h2>Book a practice</h2>
+        <label>Topic
+          <input type="hidden" name="subject" value="">
+          <button class="subject-picker" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="subject-value">Choose a topic</span><span class="subject-arrow" aria-hidden="true">⌄</span></button>
+          <div class="subject-menu" role="listbox" aria-label="Topic" hidden>
+            <button type="button" role="option" data-value="Practice — Pelvic floor">Practice — Pelvic floor</button>
+            <button type="button" role="option" data-value="Practice — Healthy back">Practice — Healthy back</button>
+            <button type="button" role="option" data-value="Practice — Prenatal yoga">Practice — Prenatal yoga</button>
+            <button type="button" role="option" data-value="Retreat enquiry">Retreat enquiry</button>
+            <button type="button" role="option" data-value="Gift certificate">Gift certificate</button>
+          </div>
+        </label>
+        <label>Your name<input type="text" name="name" autocomplete="name" maxlength="80" required placeholder="Name"></label>
+        <label>Email address<input type="email" name="email" autocomplete="email" maxlength="254" required placeholder="Email"></label>
+        <label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted and to processing of this data. <a href="privacy.html">Details</a>.</span></label>
+        <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="button form-button" type="submit" disabled>Send enquiry <span>↗</span></button>
+        <p id="form-status" class="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer id="site-footer" class="contact-footer"></footer>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -15,3 +15,20 @@
 Практики: /practices.html
 Ретриты: /retreat.html
 Об авторе: /about.html
+
+## English
+
+Alina Manuilova is a yoga and yoga therapy teacher.
+
+- Yoga in Larnaca, Cyprus
+- Online yoga
+- Prenatal yoga in Larnaca and Cyprus
+- Healthy back practices
+- Women's wellness and pelvic floor practices
+- Yoga retreats in Cyprus, including Larnaca and Limassol
+- Gift certificates for yoga sessions
+
+Booking and contact: /en/contact.html
+Practices: /en/practices.html
+Retreats: /en/retreat.html
+About: /en/about.html

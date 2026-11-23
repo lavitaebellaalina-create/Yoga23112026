@@ -1,8 +1,22 @@
 const menuButton = document.querySelector(".menu-button");
 const menu = document.querySelector(".nav");
+const isEnglish = window.location.pathname.split("/").includes("en");
 
 if (menuButton && menu) {
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
   const currentFile = window.location.pathname.split("/").pop() || "index.html";
+  document.documentElement.lang = isEnglish ? "en" : "ru";
+
+  if (!menu.querySelector(".language-switch")) {
+    const ruFile = isEnglish ? `../${currentFile}` : `${currentFile}`;
+    const enFile = isEnglish ? currentFile : `en/${currentFile}`;
+    const switcher = document.createElement("span");
+    switcher.className = "language-switch";
+    switcher.innerHTML = isEnglish
+      ? `<a href="${ruFile}" lang="ru">RU</a><span>/</span><a href="${enFile}" class="active" lang="en" aria-current="page">EN</a>`
+      : `<a href="${ruFile}" class="active" lang="ru" aria-current="page">RU</a><span>/</span><a href="${enFile}" lang="en">EN</a>`;
+    menu.appendChild(switcher);
+  }
   menu.querySelectorAll("a").forEach((link) => {
     const linkFile = link.getAttribute("href").split("#")[0];
     if (linkFile === currentFile || (currentFile === "" && linkFile === "index.html")) {
@@ -24,7 +38,7 @@ const footer = document.querySelector("#site-footer");
 if (footer) {
   footer.innerHTML = `
     <div>
-      <p class="footer-title">Начнём практику?</p>
+      <p class="footer-title">${isEnglish ? "Start your practice" : "Начнём практику?"}</p>
       <div class="social-links">
         <a href="https://t.me/alinamanuilova" target="_blank" rel="noopener">Telegram ↗</a>
         <a href="https://youtube.com/@alinamanuilova?si=CtinvBpgB77mdxNF" target="_blank" rel="noopener">YouTube ↗</a>
@@ -97,12 +111,12 @@ if (leadForm) {
       if (!response.ok) throw new Error(result.error || "Не удалось отправить заявку");
       leadForm.reset();
       submit.disabled = true;
-      status.textContent = "Спасибо, ваша заявка принята.";
+      status.textContent = isEnglish ? "Thank you, your enquiry has been received." : "Спасибо, ваша заявка принята.";
       submit.textContent = "Получено";
     } catch (error) {
       status.textContent = error.message;
       submit.disabled = false;
-      submit.innerHTML = 'Отправить заявку <span>↗</span>';
+      submit.innerHTML = isEnglish ? 'Send enquiry <span>↗</span>' : 'Отправить заявку <span>↗</span>';
     }
   });
 }

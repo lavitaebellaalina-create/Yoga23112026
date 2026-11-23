@@ -71,7 +71,7 @@ const server = http.createServer(async (request, response) => {
   if (request.method === "GET" && request.url === "/sitemap.xml") {
     const scheme = request.headers["x-forwarded-proto"] === "https" ? "https" : "http";
     const origin = new URL("/", `${scheme}://${host}`).origin;
-    const pages = ["", "about.html", "practices.html", "retreat.html", "reviews.html", "contact.html", "privacy.html"];
+    const pages = ["", "about.html", "practices.html", "retreat.html", "reviews.html", "contact.html", "privacy.html", "en/", "en/about.html", "en/practices.html", "en/retreat.html", "en/reviews.html", "en/contact.html", "en/privacy.html"];
     const urls = pages.map((page) => `  <url><loc>${origin}/${page}</loc></url>`).join("\n");
     response.writeHead(200, { "Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=3600" });
     return response.end(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
@@ -94,7 +94,12 @@ const server = http.createServer(async (request, response) => {
         "Практика — Здоровая спина",
         "Практика — Йога для беременных",
         "Запрос ретрита",
-        "Сертификат"
+        "Сертификат",
+        "Practice — Pelvic floor",
+        "Practice — Healthy back",
+        "Practice — Prenatal yoga",
+        "Retreat enquiry",
+        "Gift certificate"
       ];
       const subject = String(data.subject || "").trim();
       if (String(data.website || "").trim()) return json(response, 200, { ok: true });
@@ -132,6 +137,7 @@ const server = http.createServer(async (request, response) => {
     return json(response, 400, { error: "Некорректный адрес" });
   }
   if (pathname === "/") pathname = "/index.html";
+  if (pathname === "/en/" || pathname === "/en") pathname = "/en/index.html";
   const filePath = path.resolve(root, "." + pathname);
   if (!filePath.startsWith(root + path.sep)) return json(response, 403, { error: "Доступ запрещён" });
 
