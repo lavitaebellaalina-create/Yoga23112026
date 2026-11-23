@@ -471,10 +471,11 @@ footer > div > a { border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
   align-items: start;
   padding: 24px 28px 30px;
 }
-.source-service h2 { font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 8px 0 12px; }
-.source-service p:not(.service-meta) { min-height: 72px; line-height: 1.55; color: #59615d; }
-.source-service strong { margin: 0; align-self: end; }
-.source-service .button { align-self: end; }
+.source-service h2 { grid-row: 2; font-family: "Marcellus", serif; font-size: var(--card-title); font-weight: 400; margin: 8px 0 12px; }
+.source-service .service-meta { grid-row: 1; }
+.source-service p:not(.service-meta) { grid-row: 3; min-height: 72px; line-height: 1.55; color: #59615d; }
+.source-service strong { grid-row: 4; margin: 0; align-self: end; }
+.source-service .button { grid-row: 5; align-self: end; }
 .course-details { display: grid; gap: 12px; margin: 0 4.5vw 110px; }
 .course-detail { border: 1px solid var(--line); border-radius: 18px; background: #faf8f1; overflow: hidden; }
 .open-course { padding: 0; }
