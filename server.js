@@ -2,15 +2,10 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { LeadSubmissionError, submitLead } from "./lead-service.js";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const dataFile = path.join(root, "data", "leads.jsonl");
 const port = Number(process.env.PORT || 4173);
-const requests = new Map();
-
-if (!process.env.VERCEL) {
-  fs.mkdirSync(path.dirname(dataFile), { recursive: true });
-}
 
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -34,24 +29,13 @@ function json(response, status, value) {
   response.end(JSON.stringify(value));
 }
 
-function rateLimited(ip) {
-  const now = Date.now();
-  const windowStart = now - 60_000;
-  const entries = (requests.get(ip) || []).filter((time) => time > windowStart);
-  if (entries.length >= 5) {
-    requests.set(ip, entries);
-    return true;
-  }
-  entries.push(now);
-  requests.set(ip, entries);
-  return false;
-}
-
 async function readJson(request) {
   let body = "";
   for await (const chunk of request) {
     body += chunk;
-    if (Buffer.byteLength(body) > 16_384) throw new Error("Слишком много данных");
+    if (Buffer.byteLength(body) > 16_384) {
+      throw new LeadSubmissionError(413, "Слишком много данных");
+    }
   }
   return JSON.parse(body);
 }
@@ -80,56 +64,24 @@ const server = http.createServer(async (request, response) => {
   }
 
   if (isApi) {
-    const origin = request.headers.origin;
-    if (origin && new URL(origin).host !== host) {
-      return json(response, 403, { error: "Запрос отклонён" });
-    }
-    if (rateLimited(request.socket.remoteAddress || "unknown")) {
-      return json(response, 429, { error: "Слишком много попыток. Повторите позже." });
-    }
     try {
       const data = await readJson(request);
-      const name = String(data.name || "").trim();
-      const email = String(data.email || "").trim().toLowerCase();
-      const allowedSubjects = [
-        "Практика — Тазовое дно",
-        "Практика — Здоровая спина",
-        "Практика — Йога для беременных",
-        "Запрос ретрита",
-        "Сертификат",
-        "Практика — Йога в Ларнаке",
-        "Онлайн клуб йоги",
-        "Practice — Pelvic floor",
-        "Practice — Healthy back",
-        "Practice — Prenatal yoga",
-        "Retreat enquiry",
-        "Gift certificate",
-        "Practice — Yoga in Larnaca",
-        "Online yoga club",
-        "Practice — Prenatal yoga"
-      ];
-      const subject = String(data.subject || "").trim();
-      if (String(data.website || "").trim()) return json(response, 200, { ok: true });
-      if (name.length < 2 || name.length > 80) return json(response, 400, { error: "Укажите имя" });
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) {
-        return json(response, 400, { error: "Проверьте email" });
-      }
-      if (!data.consent) return json(response, 400, { error: "Нужно согласие на рассылку" });
-      if (!allowedSubjects.includes(subject)) return json(response, 400, { error: "Выберите тему обращения" });
-
-      const lead = {
-        name,
-        email,
-        subject,
-        consent: true,
-        createdAt: new Date().toISOString()
-      };
-      await fs.promises.appendFile(dataFile, JSON.stringify(lead) + "\n", { mode: 0o600 });
-      return json(response, 201, { ok: true });
+      const forwardedFor = request.headers["x-forwarded-for"];
+      const ip = String(forwardedFor || request.socket.remoteAddress || "unknown").split(",")[0].trim();
+      const result = await submitLead({
+        data,
+        ip,
+        origin: request.headers.origin,
+        host
+      });
+      return json(response, result.status, result.body);
     } catch (error) {
+      if (error instanceof LeadSubmissionError) {
+        return json(response, error.status, { error: error.message });
+      }
       if (error instanceof SyntaxError) return json(response, 400, { error: "Некорректные данные" });
-      console.error(error);
-      return json(response, 500, { error: "Не удалось сохранить заявку" });
+      console.error("Lead email delivery failed", error);
+      return json(response, 502, { error: "Не удалось отправить заявку. Попробуйте позже." });
     }
   }
 
